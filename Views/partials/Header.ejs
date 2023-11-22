@@ -6,6 +6,32 @@
     <style>
         nav {
             background-color: #F8C8DC;
+            text-align: center;
+            list-style-type: none;
         }
+
+        nav a {
+	        text-decoration: none;
+        }
+        
+        nav ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        nav li {
+            padding: 1em;
+	        width: 100%;
+            list-style-type: none;
+        }
+
+        footer {
+            /*Taken from 
+            https://stackoverflow.com/questions/39099295/make-div-stick-to-bottom-of-page*/
+            position: fixed;
+            bottom: 0;
+        }
+        
     </style>
 </head>

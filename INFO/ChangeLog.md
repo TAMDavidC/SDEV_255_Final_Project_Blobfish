@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0 - new pages
+
+1. added a login page
+2. added a sign up page
+3. changed the color scheme
+4. added a footer partial view
+5. updated the footer to attach to the bottom
+6. made some formatting changes
+
 ## 1.1.0 - setting up
 
 1. set up project

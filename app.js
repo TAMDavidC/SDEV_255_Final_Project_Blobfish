@@ -15,7 +15,11 @@ app.get("/", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    res.render("login", {title: "Home"})
+    res.render("login", {title: "Login"})
+})
+
+app.get("/Signup", (req, res) => {
+    res.render("signup", {title: "Sign up"})
 })
 
 // 404
