@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/Header.ejs') %>
+
+<body>
+    <style>
+        .class {
+            text-align: center;
+            background-color: rgb(255, 187, 162);
+        }
+        h1 {
+            text-align: center;
+            font-size: 150%;
+        }
+
+    </style>
+    <%- include('./partials/NavBar.ejs') %>
+
+    <div class="courses">
+        <h1>All Courses Available</h1>
+
+        <% if (courses.length > 0) { %>
+            <% courses.forEach(course => { %>
+            <div class="class">
+                <h2 class="title"><%= course.title %></h2>
+                <p class="desc"><%= course.desc %></p>
+                <h3 class="subject">Subject: <%= course.subject %></h3>
+                <h3 class="credits">Credits: <%= course.credits %></h3>
+            </div>
+            <% }) %>
+        <% } else { %>
+            <p> No courses available!</p>
+        <% } %>
+    </div>
+
+    <%- include('./partials/Footer.ejs') %>
+</body>
+</html>

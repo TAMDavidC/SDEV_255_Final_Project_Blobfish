@@ -1,5 +1,9 @@
 # Notes
 
+## REQUIREMENTS - David Cruz, Reese McGuffey
+
+1. Courses have to have a minimum of a course name, description, subject area, and number of credits.  
+
 ## How to use form - David Cruz
 
 <https://www.w3schools.com/html/html_forms.asp>

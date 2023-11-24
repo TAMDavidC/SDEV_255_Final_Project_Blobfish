@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 - more stuff yippee
+
+1. added course page
+2. added course index page
+3. made more style changes
+4. updated navbar
+5. created dummy classes
+
 ## 1.2.0 - new pages
 
 1. added a login page

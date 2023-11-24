@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/Header.ejs') %>
+
+<body>
+    <%- include('./partials/NavBar.ejs') %>
+    <h1>Course: <%= course.title %></h1>
+    <h2>Description:</h2>
+    <p><%= course.desc %></p>
+    <h2>Subject: <%= course.subject %></h2>
+    <h2>Credits: <%= course.credits %></h2>
+    <%- include('./partials/Footer.ejs') %>
+</body>
+</html>
