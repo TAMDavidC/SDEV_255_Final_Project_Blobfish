@@ -2,13 +2,14 @@
 
 11/22/2023
 based off of the express tutorial
-Version 1.3.0
+Version 1.4.0
 
 ## Team
 
-Alexander Liam Riggle
 David Cruz
 Reese McGuffey
+Christina Ralston
+Alexander Riggle (INACTIVE)
 
 ## Description
 

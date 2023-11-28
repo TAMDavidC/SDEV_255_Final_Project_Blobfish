@@ -1,0 +1,61 @@
+* {
+  font-family: "Garamond", garamond, serif;
+}
+
+body {
+  background-color: rgb(115, 196, 196);
+  margin: 0;
+}
+
+h1 {
+  background-color: rgb(255, 255, 255);
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+nav {
+  background-color: #F8C8DC;
+  text-align: center;
+  font-size: 1.25em;
+  list-style-type: none;
+  padding-bottom: 0.75em;
+}
+
+nav h1 {
+  background-color: #F8C8DC;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.tabHolder {
+  background: #2779ac;
+  border-radius: 40px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0;
+  padding-left: 0;
+}
+
+nav li {
+  background: #45B6FE;
+  padding: 1em;
+  width: 90%;
+  list-style-type: none;
+  border: groove;
+  border-color: #FFFFFF;
+  border-width: 4px 4px;
+  border-radius: 40px;
+}
+
+footer {
+  /*Taken from 
+  https://stackoverflow.com/questions/39099295/make-div-stick-to-bottom-of-page*/
+  position: fixed;
+  bottom: 0;
+}

@@ -22,10 +22,12 @@
         <% if (courses.length > 0) { %>
             <% courses.forEach(course => { %>
             <div class="class">
-                <h2 class="title"><%= course.title %></h2>
-                <p class="desc"><%= course.desc %></p>
-                <h3 class="subject">Subject: <%= course.subject %></h3>
-                <h3 class="credits">Credits: <%= course.credits %></h3>
+                <a class="class" href="/courses/<%= course._id%>">
+                    <h2 class="title"><%= course.title %></h2>
+                    <p class="desc"><%= course.desc %></p>
+                    <h3 class="subject">Subject: <%= course.subject %></h3>
+                    <h3 class="credits">Credits: <%= course.credits %></h3>
+                </a>
             </div>
             <% }) %>
         <% } else { %>

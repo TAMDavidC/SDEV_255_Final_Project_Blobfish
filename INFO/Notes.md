@@ -1,5 +1,14 @@
 # Notes
 
+## how to use input - David Cruz
+
+<https://www.w3schools.com/tags/tag_input.asp>
+
+## border radius / shadow effect - David Cruz
+
+<https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius> - radius
+<https://www.w3schools.com/css/css3_shadows.asp> - shadow
+
 ## REQUIREMENTS - David Cruz, Reese McGuffey
 
 1. Courses have to have a minimum of a course name, description, subject area, and number of credits.  

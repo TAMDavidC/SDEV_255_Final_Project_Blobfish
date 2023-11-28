@@ -1,68 +1,80 @@
 // 11/22/2023
 const express = require(`express`);
+const morgan = require(`morgan`);
+const mongoose = require('mongoose');
+
+// MongoDB
+const Course = require('./models/course');
+
 
 const app = express();
 
+// connect to mongodb
+const dbURI = 'mongodb+srv://user1:test4321@cluster0.rlhew1a.mongodb.net/Final_Project?retryWrites=true&w=majority'
+mongoose.connect(dbURI)
+    .then((result) => app.listen(3000))
+    .catch((err) => console.log(err));
+
 app.set('view engine', 'ejs');
 
-// listen for requests
-app.listen(3000);
-
-const dummy_courses = [
-    {
-        title: "Awesome Class",
-        desc: "cool course :) you also won't die",
-        subject: "Nothing",
-        credits: 10
-    },
-    {
-        title: "Funny Class",
-        desc: "This class teaches you how to be funny and nothing else. Very important, no doubt.",
-        subject: "Communication",
-        credits: 1.5
-    },
-    {
-        title: "Theory of Interdimensional Space Travel and Economics",
-        desc: "Learn how to use space travel to make a career.",
-        subject: "Business",
-        credits: 1
-    },
-    {
-        title: "Web Application Development",
-        desc: "Students will learn how to use and apply client and server-side scripting and application programming interfaces to build web-based applications which interact with a data source including XML and JSON.  Students will prepare both front and back-end content using techniques including, Hyper Text Markup Language and JavaScript to create dynamic data-driven web interfaces. The course builds on the Web Site Development course, emphasizing full stack implementation.",
-        subject: "Software Development",
-        credits: 3
-    }
-]
+// middle ware and static files
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}));
+app.use(morgan('dev'));
 
 // links
 app.get("/", (req, res) => {
     res.render("index", {title: "Home"})
 })
 
-app.get("/courseIndex", (req, res) => {
-    res.render("courseIndex", {title: "Courses", courses:dummy_courses})
+// courses
+
+app.get("/courses", (req, res) => {
+    Course.find().sort({createdAt: -1})
+        .then(result =>{
+            res.render("courseIndex", {title: "Courses", courses:result})
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    
 })
 
+app.get("/courses/:id", (req, res) => {
+    const id = req.params.id;
+    Course.findById(id)
+        .then(result => {
+            res.render("course", { title: "Course", course: result })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+app.get("/courses/create", (req, res) =>{
+    res.render("createCourse", {title: "Create Course"})
+})
+
+app.post('/courses', (req, res) => {
+    const course = new Course(req.body);
+
+    course.save()
+        .then((result) =>{
+            res.redirect('/courses');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+})
+
+
+// other stuff
 app.get("/login", (req, res) => {
     res.render("login", {title: "Login"})
 })
 
 app.get("/signup", (req, res) => {
     res.render("signup", {title: "Sign up"})
-})
-
-app.get("/course", (req, res) => {
-    res.render("course", {
-            title: "Course",
-            course: {
-                title: "????",
-                desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quis ullam praesentium fugiat nulla, animi quasi dignissimos adipisci voluptates veritatis impedit veniam architecto natus maxime sed vel molestias culpa deleniti!",
-                subject: "????",
-                credits: "#"
-            },
-        
-        })
 })
 
 // 404

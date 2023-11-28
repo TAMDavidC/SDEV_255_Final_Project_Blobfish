@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.4.0 - Week 2 Start
+
+1. added ability to create courses
+2. actually made css styles into their own document
+3. made some more css additions and fixes
+4. New member to the team
+5. create the modules folder
+   1. new course.js file
+6. morgan and mongoose support
+7. new public folder
+   1. styles now works
+8. header now can use styles.css
+9. Navbar now has a link to create courses
+10. course index can now parse through mongoDB Data
+11. create course has been created
+12. singular course can now get a MongoDB course
+
 ## 1.3.0 - more stuff yippee
 
 1. added course page
