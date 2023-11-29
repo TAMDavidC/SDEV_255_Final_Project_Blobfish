@@ -4,11 +4,33 @@
 
 <body>
     <%- include('./partials/NavBar.ejs') %>
-    <h1>Course: <%= course.title %></h1>
-    <h2>Description:</h2>
-    <p><%= course.desc %></p>
-    <h2>Subject: <%= course.subject %></h2>
-    <h2>Credits: <%= course.credits %></h2>
+    <div>
+        <h1>Course: <%= course.title %></h1>
+        <h2>Description:</h2>
+        <p><%= course.desc %></p>
+        <h2>Subject: <%= course.subject %></h2>
+        <h2>Credits: <%= course.credits %></h2>
+
+        <a data-doc="<%= course._id%>" class="delete">Delete</a>
+        <a href="/courses/create/<%= course._id%>">Update</a>
+    </div>
+
     <%- include('./partials/Footer.ejs') %>
+
+    <script>
+        const trashcan = document.querySelector('a.delete');
+
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/courses/${trashcan.dataset.doc}`;
+
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(err => console.log(err))
+        })
+
+    </script>
 </body>
 </html>

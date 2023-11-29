@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0 - destruction
+
+1. You can destroy a course
+2. Tried to add a favicon
+3. More CSS touch-ups
+
 ## 1.4.0 - Week 2 Start
 
 1. added ability to create courses

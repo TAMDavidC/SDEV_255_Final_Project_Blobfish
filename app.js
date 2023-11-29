@@ -40,21 +40,23 @@ app.get("/courses", (req, res) => {
     
 })
 
-app.get("/courses/:id", (req, res) => {
+app.get("/courses/create", (req, res) =>{
+    res.render("createCourse", {title: "Create Course"})
+})
+
+app.get("/courses/create/:id", (req, res) =>{
     const id = req.params.id;
     Course.findById(id)
         .then(result => {
-            res.render("course", { title: "Course", course: result })
+            res.render("updatecourse", {title: "Update Course", course: result })
         })
         .catch(err => {
             console.log(err);
         })
 })
 
-app.get("/courses/create", (req, res) =>{
-    res.render("createCourse", {title: "Create Course"})
-})
 
+// add new course
 app.post('/courses', (req, res) => {
     const course = new Course(req.body);
 
@@ -67,6 +69,41 @@ app.post('/courses', (req, res) => {
         });
 })
 
+app.get("/courses/:id", (req, res) => {
+    const id = req.params.id;
+    Course.findById(id)
+        .then(result => {
+            res.render("course", { title: "Course", course: result })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+app.delete('/courses/:id', (req, res) =>{
+    const id = req.params.id;
+
+    Course.findByIdAndDelete(id)
+        .then(result => {
+            res.json({redirect: '/courses'});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+
+app.put("/courses/:id", (req, res) =>{
+    console.log(req.params.id)
+
+    Course.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
+        .then((result) =>{
+            res.redirect('/courses');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+})
 
 // other stuff
 app.get("/login", (req, res) => {

@@ -4,17 +4,22 @@
 
 body {
   background-color: rgb(115, 196, 196);
-  margin: 0;
+  margin: 2em;
+  display: block;
 }
 
 h1 {
   background-color: rgb(255, 255, 255);
-  border-top-right-radius: 100%;
-  border-bottom-right-radius: 100%;
+  border-radius: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 nav {
   background-color: #F8C8DC;
+  border-top-left-radius: 10em 5em;
+  border-top-right-radius: 10em 5em;
   text-align: center;
   font-size: 1.25em;
   list-style-type: none;
@@ -22,7 +27,7 @@ nav {
 }
 
 nav h1 {
-  background-color: #F8C8DC;
+  background: none;
 }
 
 nav a {
@@ -30,7 +35,7 @@ nav a {
 }
 
 .tabHolder {
-  background: #2779ac;
+  background-image: linear-gradient(rgb(115, 196, 196), rgb(19, 105, 105));;
   border-radius: 40px;
 }
 
@@ -58,4 +63,5 @@ footer {
   https://stackoverflow.com/questions/39099295/make-div-stick-to-bottom-of-page*/
   position: fixed;
   bottom: 0;
+  font-style: italic;
 }
