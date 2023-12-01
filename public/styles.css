@@ -3,17 +3,38 @@
 }
 
 body {
-  background-color: rgb(115, 196, 196);
-  margin: 2em;
+  background-color: rgb(84, 173, 173);
+  margin: 0em;
   display: block;
+  font-size: 120%;
+  word-wrap: break-word;
+}
+
+.infoP {
+  background-color: rgb(162, 214, 214);
 }
 
 h1 {
   background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;  
+  font-size: 170%;
+}
+
+h2 {
+  /* background-color: rgb(255, 255, 255); */
   border-radius: 100%;
   text-align: center;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 10px;  
+  font-size: 120%;
+  font-weight: bold;
+}
+h2.desc {
+  box-shadow: 0px 2px 0px black;
 }
 
 nav {
@@ -35,8 +56,8 @@ nav a {
 }
 
 .tabHolder {
-  background-image: linear-gradient(rgb(115, 196, 196), rgb(19, 105, 105));;
-  border-radius: 40px;
+  background-image: linear-gradient(rgb(115, 196, 196), rgb(19, 105, 105));
+  /* border-radius: 40px; */
 }
 
 nav ul {
@@ -47,7 +68,20 @@ nav ul {
   padding-left: 0;
 }
 
-nav li {
+
+.classItem {
+  list-style-type: none;
+}
+.classBox {
+  display: flex;
+  align-items: flex-end;
+}
+
+.classTitle {
+  box-shadow: 0px 2px 0px black;
+}
+
+.linkButton {
   background: #45B6FE;
   padding: 1em;
   width: 90%;
@@ -58,10 +92,47 @@ nav li {
   border-radius: 40px;
 }
 
+
 footer {
   /*Taken from 
   https://stackoverflow.com/questions/39099295/make-div-stick-to-bottom-of-page*/
   position: fixed;
   bottom: 0;
   font-style: italic;
+  background-color: rgb(255, 255, 255);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  width: 30%;
+  line-height: 0px;
+}
+
+.class {
+  text-align: center;
+  background-color: rgb(255, 187, 162);
+  border-radius: 40px;
+}
+
+form {
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 130%;
+  width: 50%;
+}
+
+form input {
+  width: 50%;
+  font-size: 120%;
+}
+
+form textarea{
+  width: 70%;
+}
+
+form button {
+  font-size: 110%;
+}
+
+a {
+  cursor: pointer;
 }

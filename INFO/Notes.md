@@ -1,5 +1,22 @@
 # Notes
 
+## style stuff
+
+aliging items
+<https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container>
+
+box shadow
+<https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow>
+
+cursor
+<https://www.shecodes.io/athena/5042-how-to-change-the-cursor-when-hovering-over-a-button>
+
+keep the text from going off
+<https://stackoverflow.com/questions/26364636/how-do-i-stop-text-running-off-screen-and-breaking-layout-without-using-css-word>
+
+aligning text
+<https://www.w3schools.com/css/css_align.asp>
+
 ## How to update documents in Mongoose
 
 How to update data with mongoose

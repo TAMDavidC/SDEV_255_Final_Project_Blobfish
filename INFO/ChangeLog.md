@@ -1,8 +1,9 @@
 # Changelog
 
-## 1.6.0 - UPDATE
+## 1.6.0 - update
 
 1. Courses can now be updated!
+2. Major CSS style changes
 
 ## 1.5.0 - destruction
 
