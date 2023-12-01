@@ -1,5 +1,15 @@
 # Notes
 
+## How to update documents in Mongoose
+
+How to update data with mongoose
+<https://stackoverflow.com/questions/41437524/node-js-and-mongodb-update-form-data>
+
+How FindOneAndUpdate works
+<https://mongoosejs.com/docs/tutorials/findoneandupdate.html>
+
+Next time I will not use PUT!
+
 ## sakdflkdlsfajflksdajdf - David Cruz
 
 <https://youtu.be/i9YnKRXZzB8>

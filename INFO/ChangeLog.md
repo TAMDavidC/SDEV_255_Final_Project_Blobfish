@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0 - UPDATE
+
+1. Courses can now be updated!
+
 ## 1.5.0 - destruction
 
 1. You can destroy a course

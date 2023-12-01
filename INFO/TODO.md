@@ -9,13 +9,13 @@
   - [x] course index - David Cruz & Reese McGuffey | 11/24/2023
   - [x] template user page - David Cruz | 11/24/2023
   - [x] beautifying - Reese McGuffey | 11/24/2023
-- [ ] Module 6 - finish backend
-  - [ ] finalize the links and routes
-  - [ ] add the ability to create, read, update, and destroy courses
+- [x] Module 6 - finish backend - who cares who did it, WE GOT IT DONE!!!
+  - [x] finalize the links and routes
+  - [x] add the ability to create, read, update, and destroy courses
     - [x] create
     - [x] read
-    - [ ] update
-    - [ ] destroy
+    - [x] update
+    - [x] destroy
   - [x] make sure all courses can be seen in the index page.
   - [x] get styles working | morgan
   - [x] get mongoose

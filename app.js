@@ -55,6 +55,22 @@ app.get("/courses/create/:id", (req, res) =>{
         })
 })
 
+app.post("/courses/update", (req, res) =>{
+    const update = {
+        title: req.body.title,
+        desc: req.body.desc,
+        subject: req.body.subject,
+        credits: req.body.credits}
+
+    Course.findOneAndUpdate({_id: req.body._id}, update, {new: true})
+        .then((result) =>{
+            res.redirect('/courses');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+})
+
 
 // add new course
 app.post('/courses', (req, res) => {
@@ -90,19 +106,6 @@ app.delete('/courses/:id', (req, res) =>{
         .catch(err => {
             console.log(err);
         })
-})
-
-
-app.put("/courses/:id", (req, res) =>{
-    console.log(req.params.id)
-
-    Course.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
-        .then((result) =>{
-            res.redirect('/courses');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
 })
 
 // other stuff
