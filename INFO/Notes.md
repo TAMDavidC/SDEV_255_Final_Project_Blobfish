@@ -1,8 +1,24 @@
 # Notes
 
+## I'm dumb I forgot this json thing
+
+~~~ javascript
+app.use(express.json());
+~~~
+
+this allows for the website to use json.
+
+## how to black list folders in github
+
+<https://tilburgsciencehub.com/building-blocks/collaborate-and-share-your-work/use-github/git-ignore/>
+
+## how to make a drop down menu
+
+<https://blog.hubspot.com/website/html-dropdown>
+
 ## style stuff
 
-aliging items
+aligning items
 <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container>
 
 box shadow

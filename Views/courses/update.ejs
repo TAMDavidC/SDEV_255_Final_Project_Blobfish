@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/Header.ejs') %>
+    <%- include('../partials/Header.ejs') %>
 
 <body>
-    <%- include('./partials/NavBar.ejs') %>
+    <%- include('../partials/NavBar.ejs') %>
     <h1>Create Course</h1>
     <div>
-        <form action="/courses/update" method="post">
+        <form action="/courses/create" method="post">
             <label for="title">Course Title:</label>
             <input type="text" id="title" name="title" value="<%= course.title%>" required><br>
 
@@ -24,6 +24,6 @@
         </form>
     </div>
     
-    <%- include('./partials/Footer.ejs') %>
+    <%- include('../partials/Footer.ejs') %>
 </body>
 </html>

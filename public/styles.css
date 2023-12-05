@@ -8,6 +8,7 @@ body {
   display: block;
   font-size: 120%;
   word-wrap: break-word;
+  padding-bottom: 5%;
 }
 
 .infoP {
@@ -33,6 +34,11 @@ h2 {
   font-size: 120%;
   font-weight: bold;
 }
+
+h3 {
+  text-align: center;
+}
+
 h2.desc {
   box-shadow: 0px 2px 0px black;
 }

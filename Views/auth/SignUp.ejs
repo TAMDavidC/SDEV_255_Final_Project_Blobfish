@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/Header.ejs') %>
+
+<body>
+    <%- include('../partials/NavBar.ejs') %>
+    <h1>Login</h1>
+    <form>
+        <label for="accountType">What are you?</label> <br>
+        <select name="accountType" id="accountType" required>
+            <option value="student" selected>Student</option>
+            <option value="teacher">Teacher</option>
+        </select><br>
+        <div class="accountType error"></div>
+
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br>
+        <div class="firstName error"></div>
+
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br>
+        <div class="lastName error"></div>
+
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" required><br>
+        <div class="email error"></div>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <div class="password error"></div>
+
+        <label for="passwordRe">Re-enter Password:</label><br>
+        <input type="password" id="passwordRe" name="passwordRe" required><br>
+        <div class="passwordRe error"></div>
+
+        <button>Submit</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+        const accountError = document.querySelector('.accountType.error')
+        const firstNameError = document.querySelector('.firstName.error')
+        const lastNameError = document.querySelector('.lastName.error')
+        const emailError = document.querySelector('.email.error')
+        const passwordError = document.querySelector('.password.error')
+        const passwordReError = document.querySelector('.passwordRe.error')
+    
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            // reset errors
+            accountError.textContent = ''
+            firstNameError.textContent = ''
+            lastNameError.textContent = ''
+            emailError.textContent = '';
+            passwordError.textContent = '';
+            passwordReError.textContent = '';
+    
+            // get the values
+            const accountType = form.accountType.value
+            const firstName = form.firstName.value
+            const lastName = form.lastName.value
+            const email = form.email.value
+            const password = form.password.value
+            const passwordRe = form.passwordRe.value
+            const user_data = {accountType, firstName, lastName, email, password}
+
+            if (password === passwordRe) {
+                try {
+                    const res = await fetch('signup', {
+                        method: "post",
+                        body: JSON.stringify(user_data),
+                        headers: {'Content-Type': 'application/json'}
+                    });
+                    const data = await res.json();
+                    console.log(data)
+                    if (data.errors) {
+                        accountError.textContent = data.errors.accountType;
+                        firstNameError.textContent = data.errors.firstName;
+                        lastNameError.textContent = data.errors.lastName;
+                        emailError.textContent = data.errors.email;
+                        passwordError.textContent = data.errors.password;
+                    }
+                    if (data.user) {
+                        location.assign('/')
+                    }
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            }
+            else{
+                passwordReError.textContent = "password does not match."
+            }
+        })
+    </script>
+    
+    <%- include('../partials/Footer.ejs') %>
+</body>
+</html>

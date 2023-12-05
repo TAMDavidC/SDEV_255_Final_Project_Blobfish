@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/Header.ejs') %>
+    <%- include('../partials/Header.ejs') %>
 
 <body>
     <style>
@@ -16,11 +16,13 @@
         }
 
     </style>
-    <%- include('./partials/NavBar.ejs') %>
+    <%- include('../partials/NavBar.ejs') %>
     
     <h1>All Courses Available</h1>
+    <% if (user) if (user.accountType === 'teacher') {%>
     <a class="linkButton alignCenter" href="/courses/create">Create Course</a>
-    
+    <% } %>
+
     <div class="courses">
 
         <% if (courses.length > 0) { %>
@@ -41,6 +43,6 @@
         <% } %>
     </div>
 
-    <%- include('./partials/Footer.ejs') %>
+    <%- include('../partials/Footer.ejs') %>
 </body>
 </html>

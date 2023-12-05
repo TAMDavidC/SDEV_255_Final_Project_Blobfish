@@ -2,9 +2,11 @@
 const express = require(`express`);
 const morgan = require(`morgan`);
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const { checkUser } = require('./middleware/authMiddleware');
 
-// MongoDB
-const Course = require('./models/course');
+const courseRoutes = require('./routes/courseRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 
 const app = express();
@@ -20,102 +22,21 @@ app.set('view engine', 'ejs');
 // middle ware and static files
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(morgan('dev'));
+app.use(cookieParser());
 
+app.get('*', checkUser);
 // links
 app.get("/", (req, res) => {
-    res.render("index", {title: "Home"})
+    res.render("index", {title: "Home"});
 })
 
 // courses
+app.use('/courses', courseRoutes);
 
-app.get("/courses", (req, res) => {
-    Course.find().sort({createdAt: -1})
-        .then(result =>{
-            res.render("courseIndex", {title: "Courses", courses:result})
-        })
-        .catch(err => {
-            console.log(err)
-        });
-    
-})
-
-app.get("/courses/create", (req, res) =>{
-    res.render("createCourse", {title: "Create Course"})
-})
-
-app.get("/courses/create/:id", (req, res) =>{
-    const id = req.params.id;
-    Course.findById(id)
-        .then(result => {
-            res.render("updatecourse", {title: "Update Course", course: result })
-        })
-        .catch(err => {
-            console.log(err);
-        })
-})
-
-app.post("/courses/update", (req, res) =>{
-    const update = {
-        title: req.body.title,
-        desc: req.body.desc,
-        subject: req.body.subject,
-        credits: req.body.credits}
-
-    Course.findOneAndUpdate({_id: req.body._id}, update, {new: true})
-        .then((result) =>{
-            res.redirect('/courses');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-})
-
-
-// add new course
-app.post('/courses', (req, res) => {
-    const course = new Course(req.body);
-
-    course.save()
-        .then((result) =>{
-            res.redirect('/courses');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-})
-
-app.get("/courses/:id", (req, res) => {
-    const id = req.params.id;
-    Course.findById(id)
-        .then(result => {
-            res.render("course", { title: "Course", course: result })
-        })
-        .catch(err => {
-            console.log(err);
-        })
-})
-
-app.delete('/courses/:id', (req, res) =>{
-    const id = req.params.id;
-
-    Course.findByIdAndDelete(id)
-        .then(result => {
-            res.json({redirect: '/courses'});
-        })
-        .catch(err => {
-            console.log(err);
-        })
-})
-
-// other stuff
-app.get("/login", (req, res) => {
-    res.render("login", {title: "Login"})
-})
-
-app.get("/signup", (req, res) => {
-    res.render("signup", {title: "Sign up"})
-})
+// auth
+app.use(authRoutes);
 
 // 404
 app.use((req, res) => {

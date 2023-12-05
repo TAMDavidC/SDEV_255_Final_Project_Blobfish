@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/Header.ejs') %>
+
+<body>
+    <%- include('../partials/NavBar.ejs') %>
+    <% if (user) { %>
+        <h1>Your Profile</h1>
+        <h2><%= user.accountType%> | <%= user.firstName%> <%= user.lastName%></h2>
+        <h3><%= user.email%></h3>
+    <% } else { %>
+        <p>You're not supposed to be here...</p>
+    <% } %>
+    <%- include('../partials/Footer.ejs') %>
+</body>
+</html>

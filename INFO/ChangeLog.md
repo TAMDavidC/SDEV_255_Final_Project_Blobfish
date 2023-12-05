@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.7.0 - Power Monger
+
+1. created new folders
+   1. controllers
+   2. routes
+   3. Views/courses
+   4. middleware
+2. created new files
+   1. course
+      1. courseController
+      2. courseRoutes
+   2. auth
+      1. authController
+      2. authMiddleware
+      3. authRoutes
+      4. user
+      5. account
+3. All of the courses routes have been moved to a separate file.
+4. users can now sign up, log in, and log out.
+5. teachers are the only account type allowed to edit courses.
+6. accounts now have a profile page.
+
 ## 1.6.0 - update
 
 1. Courses can now be updated!

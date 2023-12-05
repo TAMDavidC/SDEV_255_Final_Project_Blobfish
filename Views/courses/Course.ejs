@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/Header.ejs') %>
+    <%- include('../partials/Header.ejs') %>
 
 <body>
-    <%- include('./partials/NavBar.ejs') %>
+    <%- include('../partials/NavBar.ejs') %>
     <h1>Course: <%= course.title %></h1>
     <div class="class">
         <h2 class="desc">Description</h2>
@@ -11,12 +11,15 @@
         <h2>Subject: <%= course.subject %></h2>
         <h2>Credits: <%= course.credits %></h2>
 
+        <% if (user) if (user.accountType === 'teacher') {%>
         <a data-doc="<%= course._id%>" class="delete">Delete</a>
         <a href="/courses/create/<%= course._id%>">Update</a>
+        <%}%>
     </div>
 
-    <%- include('./partials/Footer.ejs') %>
+    <%- include('../partials/Footer.ejs') %>
 
+    <% if (user) if (user.accountType === 'teacher') {%>
     <script>
         const trashcan = document.querySelector('a.delete');
 
@@ -30,7 +33,8 @@
             .then((data) => window.location.href = data.redirect)
             .catch(err => console.log(err))
         })
-
     </script>
+    <%}%>
+    
 </body>
 </html>
