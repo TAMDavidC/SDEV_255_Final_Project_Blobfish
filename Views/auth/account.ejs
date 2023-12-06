@@ -4,13 +4,12 @@
 
 <body>
     <%- include('../partials/NavBar.ejs') %>
-    <% if (user) { %>
-        <h1>Your Profile</h1>
-        <h2><%= user.accountType%> | <%= user.firstName%> <%= user.lastName%></h2>
-        <h3><%= user.email%></h3>
-    <% } else { %>
-        <p>You're not supposed to be here...</p>
-    <% } %>
+
+    <h1>Your Profile</h1>
+    
+    <h2><%= accountUser.accountType%> | <%= accountUser.firstName%> <%= accountUser.lastName%></h2>
+    <h3><%= accountUser.email%></h3>
+    
     <%- include('../partials/Footer.ejs') %>
 </body>
 </html>

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.1 - Fixes, Tweaks, and a Blobfish
+
+1. formatting tweaks
+2. moved the log info to the top of the website.
+3. added new favicon
+4. added header image
+
 ## 1.7.0 - Power Monger
 
 1. created new folders

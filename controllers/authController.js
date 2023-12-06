@@ -83,5 +83,12 @@ module.exports.logout_get = (req, res) => {
 }
 
 module.exports.account_get = (req, res) => {
-    res.render("auth/account", {title: "Your Account"});
+    const id = req.params.id;
+    User.findById(id)
+        .then(result => {
+            res.render("auth/account", {title: "Your Account", accountUser: result});
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }

@@ -65,6 +65,16 @@ const get_course = (req, res) => {
         })
 }
 
+const join_courses = (req, res) => {
+    Course.find().sort({createdAt: -1})
+        .then(result =>{
+            res.render("courses/join", {title: "Join Courses", courses:result})
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
 const delete_course = (req, res) => {
     const id = req.params.id;
 
@@ -78,4 +88,4 @@ const delete_course = (req, res) => {
 }
 
 module.exports = {course_index, course_create_screen, update_course_screen, 
-    update_course, create_course, get_course, delete_course}
+    update_course, create_course, get_course, join_courses, delete_course}

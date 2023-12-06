@@ -19,8 +19,22 @@
   - [x] make sure all courses can be seen in the index page.
   - [x] get styles working | morgan
   - [x] get mongoose
+- [x] module 7
+  - [x] create user doc
+  - [x] allow for login
+  - [x] only teachers can change courses
+  - [x] make routing better
+  - [x] make controllers
+  - [x] make middleware
+- [ ] module 8
+  - [ ] make the account routes
+    - [ ] accounts/index
+    - [ ] accounts/id
+  - [ ] create a page to allow students to sign up for courses
+  - [ ] allow the student to see their courses on their profile
 
 - [ ] Extras
   - [x] login screen - David Cruz | 11/22/2023
   - [x] footer - Reese McGuffey | 11/22/2023
   - [x] sign up screen - David Cruz | 11/22/2023
+  - [x] account profile screen

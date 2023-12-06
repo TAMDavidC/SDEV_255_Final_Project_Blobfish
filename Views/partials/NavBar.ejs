@@ -1,19 +1,23 @@
+<div class="logged_in">
+    <% if (user) { %>
+        <p>You are logged in as</p>
+        <p><%=user.accountType%></p>
+        <p><%=user.firstName%> <%=user.lastName%></p>
+    <% } %>
+</div>
+
 <nav>
     <h1>Blobfish University</h1>
     <h2><%= title%> Page</h2>
-    <% if (user) {%>
-        <h2>You are logged in as</h2>
-        <h3><%=user.accountType%></h3>
-        <h3><%=user.firstName%> <%=user.lastName%></h3>
-    <% } %>
+    <img src="/images/blobfish.png" alt="" style="height: 20%; width: 20%;">
     
     <div class="tabHolder">
         <ul>
             <li class="linkButton"><a href="/">Home</a></li>
             <li class="linkButton"><a href="/courses">Courses</a></li>
             <% if (user) {%>  
-                <li class="linkButton"><a href="/logout">Log out</a></li>
-                <li class="linkButton"><a href="/account">Your profile</a></li>
+                <li class="linkButton"><a href="/logout">Log Out</a></li>
+                <li class="linkButton"><a href="/account/<%=user._id%>">Your Profile</a></li>
 
             <% } else {%>
                 <li class="linkButton"><a href="/login">Login</a></li>

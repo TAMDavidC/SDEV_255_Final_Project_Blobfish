@@ -19,9 +19,12 @@
     <%- include('../partials/NavBar.ejs') %>
     
     <h1>All Courses Available</h1>
-    <% if (user) if (user.accountType === 'teacher') {%>
-    <a class="linkButton alignCenter" href="/courses/create">Create Course</a>
-    <% } %>
+    <% if (user) { if (user.accountType === 'teacher') {%>
+        <a class="linkButton alignCenter" href="/courses/create">Create Course</a>
+    <% } else if (user.accountType === 'student'){ %>
+        <a class="linkButton alignCenter" href="/courses/join">Join Courses</a>
+    <% }} %>
+
 
     <div class="courses">
 

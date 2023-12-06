@@ -1,5 +1,15 @@
 # Notes
 
+## Lets go!
+
+Use absolute paths or a inner folder
+
+<https://stackoverflow.com/questions/63470995/what-might-be-the-reason-why-some-images-in-ejs-get-loaded-on-the-browser-why-ot>
+
+## How check boxes work
+
+<https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_checkbox>
+
 ## I'm dumb I forgot this json thing
 
 ~~~ javascript

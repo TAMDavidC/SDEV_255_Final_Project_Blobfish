@@ -142,3 +142,13 @@ form button {
 a {
   cursor: pointer;
 }
+
+.logged_in {
+  text-align: center;
+  width: 30%;
+  background-color: aliceblue;
+  border-radius: 25%;
+  text-align: center;
+  display: block;
+  margin: auto;
+}

@@ -51,6 +51,34 @@ const requireAuthTeacher = (req, res, next) => {
     }
 }
 
+const requireAuthStudent = (req, res, next) => {
+    const token = req.cookies.jwt;
+
+    if (token){
+        jwt.verify(token, 'blobfish secret', async  (err, decodedToken) => {
+            if (err) {
+                console.log(err.message);
+                next();
+            }
+            else {
+                console.log(decodedToken);
+                let user = await User.findById(decodedToken.id);
+
+                if (user.accountType === "student"){
+                    next();
+                }
+                else {
+                    console.log(user.accountType);
+                    res.redirect('/');
+                }
+            }
+        })
+    }
+    else {
+        res.redirect('/');
+    }
+}
+
 // check user
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
@@ -76,4 +104,4 @@ const checkUser = (req, res, next) => {
     }
 }
 
-module.exports = {requireAuth, checkUser, requireAuthTeacher};
+module.exports = {requireAuth, checkUser, requireAuthTeacher, requireAuthStudent};

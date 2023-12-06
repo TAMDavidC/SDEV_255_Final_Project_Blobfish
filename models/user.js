@@ -29,12 +29,14 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please enter an password'],
         minlength: [6, 'Minimum password length is 6 characters']
     },
+
+    courses: []
 });
 
 // fire a function after doc is saved to d
 
 userSchema.post('save', function (doc, next) {
-    console.log('new user was created & saved', doc);
+    console.log('New user was created & saved', doc);
     next();
 });
 
@@ -53,9 +55,9 @@ userSchema.statics.login = async function(email, password) {
         if (auth) {
             return user;
         }
-        throw Error('incorrect password');
+        throw Error('Incorrect password');
     }
-    throw Error('incorrect email');
+    throw Error('Incorrect email');
 }
 
 const User = mongoose.model('user', userSchema);
