@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1 - bug fixes
+
+1. teachers will no longer see the message to join classes in their profile page. 
+
 ## 2.0.0 - Done
 
 1. students can now join and drop courses.

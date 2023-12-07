@@ -23,6 +23,7 @@
     <h2><%= accountUser.accountType%> | <%= accountUser.firstName%> <%= accountUser.lastName%></h2>
     <h3><%= accountUser.email%></h3>
 
+      <% if (user) { if (user.accountType === 'student') {%>
     <div class="courses">
         <h1>Your courses</h1>
         <a class="linkButton alignCenter" href="/courses/join">Edit Courses</a>
@@ -43,6 +44,9 @@
         <% } else { %>
             <h1>You are not apart of any courses.</h1>
         <% } %>
+      <% } else if (user.accountType === 'teacher') {%>
+        <a class="linkButton alignCenter" href="/courses/create">Create Course</a>
+      <% }} %>
     
     <%- include('../partials/Footer.ejs') %>
 </body>
