@@ -1,6 +1,23 @@
 # Notes
 
-## Lets go!
+## just use await
+
+<https://stackoverflow.com/questions/8303900/mongodb-mongoose-findmany-find-all-documents-with-ids-listed-in-array>
+
+## sources for help
+
+<https://www.javatpoint.com/how-to-get-all-checked-checkbox-value-in-javascript>
+<https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp>
+<https://stackoverflow.com/questions/306924/can-i-change-the-checkbox-size-using-css>
+<https://www.w3schools.com/tags/att_input_checked.asp>
+<https://stackoverflow.com/questions/27482806/check-if-id-exists-in-a-collection-with-mongoose>
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach>
+
+## game plan for week 8
+
+Need to show what classes the student has selected in their account
+
+## Lets go
 
 Use absolute paths or a inner folder
 

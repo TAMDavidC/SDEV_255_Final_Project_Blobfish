@@ -31,7 +31,8 @@ const update_course = (req, res) => {
         title: req.body.title,
         desc: req.body.desc,
         subject: req.body.subject,
-        credits: req.body.credits}
+        credits: req.body.credits
+    }
 
     Course.findOneAndUpdate({_id: req.body._id}, update, {new: true})
         .then((result) =>{
@@ -68,7 +69,7 @@ const get_course = (req, res) => {
 const join_courses = (req, res) => {
     Course.find().sort({createdAt: -1})
         .then(result =>{
-            res.render("courses/join", {title: "Join Courses", courses:result})
+            res.render("courses/join", {title: "Edit Courses", courses:result})
         })
         .catch(err => {
             console.log(err)

@@ -4,36 +4,54 @@
 
 <body>
     <style>
-        h1 {
-            text-align: center;
-            font-size: 150%;
-        }
         .alignCenter {
             text-align: center;
             display: block;
             margin: auto;
-            width: 70%;
+            padding: auto;
+        }
+
+        input[type=checkbox] {
+            transform: scale(1.5);
         }
 
     </style>
     <%- include('../partials/NavBar.ejs') %>
     
     <div class="courses">
+        <h1>Select courses that you would like to join.</h1>
         <form action="">
             <% if (courses.length > 0) { let count = 0;%>
+
+                <div id="mydiv" data-test ="<%=courses.length%>"></div>
+
                 <% courses.forEach(course => { %>
 
                     <div class="class alignCenter">
-                        <ul class="classBox classTitle">
-                            <li class="classItem"><input type="checkbox" id="course<%=count%>" name="course<%=count%>" value="<%=course._id%>"></li>
+                        <ul class="classBox">
+                            <li class="classItem">
+                                
+                            <%if (user.courses.includes(course._id)) {%>
+                                <input 
+                                type="checkbox" 
+                                id="course<%=count%>" 
+                                name="course<%=count%>" 
+                                value="<%=course._id%>"
+                                checked>
+                            <% } else  {%>
+                                <input 
+                                type="checkbox" 
+                                id="course<%=count%>" 
+                                name="course<%=count%>" 
+                                value="<%=course._id%>">
+                            <% } %>
+                            </li>
                             <li class="classItem">
                                 <label for="course<%=count%>">
-                                    <h2><%= course.title %></h2>
+                                    <h3 style="margin: 0;"><%= course.title %></h2>
                                 </label>
                             </li>
                         </ul>
-                        
-                        <p class="desc"><%= course.desc %></p>
                         <ul class="classBox">
                             <li class="classItem"><h3 class="subject">Subject: <%= course.subject %>|</h3></li>
                             <li class="classItem"><h3 class="credits">Credits: <%= course.credits %></h3></li>
@@ -41,11 +59,56 @@
                     </div>
 
                 <% count ++;}); %>
+                <input type="hidden" name="_id" value="<%= user._id%>">
+                <button>Save</button>
             <% } else { %>
                 <p> No courses available!</p>
             <% } %>
         </form>
     </div>
+
     <%- include('../partials/Footer.ejs') %>
+
+    <script>
+        const numberOfCourses = document.getElementById('mydiv').dataset.test;
+        const form = document.querySelector('form');
+        const accountID = form._id.value;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // get the selected classes
+            var checkedList = [];
+            for (let boxNum = 0; boxNum < numberOfCourses; boxNum++){
+                var courseCheckID = "course" + boxNum;
+                var courseCheckBox = document.getElementById(courseCheckID);
+                if (courseCheckBox.checked){
+                    checkedList.push(courseCheckBox.value);
+                }
+            }
+            console.log(checkedList)
+
+            // post the data to the user account
+            try{
+                const res = await fetch('/account/update', {
+                    method: "post",
+                    body: JSON.stringify({id:accountID, courses:checkedList}),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                console.log(data)
+                if (data.completed){
+                    location.assign('/account/'+accountID);
+                }
+                if (data.errors) {
+                    console.log("There was an error");
+                }
+            }
+
+            catch (err) {
+                console.log(err);
+            }
+            });
+    </script>
 </body>
 </html>

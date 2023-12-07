@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 - Done
+
+1. students can now join and drop courses.
+
 ## 1.7.1 - Fixes, Tweaks, and a Blobfish
 
 1. formatting tweaks

@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const Course = require('../models/course');
+const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 // handle errors
@@ -85,10 +87,34 @@ module.exports.logout_get = (req, res) => {
 module.exports.account_get = (req, res) => {
     const id = req.params.id;
     User.findById(id)
-        .then(result => {
-            res.render("auth/account", {title: "Your Account", accountUser: result});
+        .then(async result => {
+            // get courses
+            let convertedId = []
+            result.courses.forEach((id) => {
+                let newId = new mongoose.Types.ObjectId(id)
+                convertedId.push(newId)
+            })
+            let courses = await Course.find({_id: {"$in": convertedId}})
+                
+            console.log(courses, result.courses, convertedId);
+            res.render("auth/account", {title: "Your Account", accountUser: result, courses});
         })
         .catch(err => {
             console.log(err);
+        })
+}
+
+module.exports.account_post = (req, res) => {
+    const update = {
+        courses: req.body.courses
+    }
+
+    User.findOneAndUpdate({_id: req.body.id}, update)
+        .then((result) => {
+            res.status(201).json({completed: true});
+            })
+        .catch(err => {
+            const errors = handleErrors(err);
+            res.status(400).json({errors});
         })
 }

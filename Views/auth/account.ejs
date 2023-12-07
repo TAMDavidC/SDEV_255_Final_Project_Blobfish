@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('../partials/Header.ejs') %>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 150%;
+        }
+        .alignCenter {
+            text-align: center;
+            display: block;
+            margin: auto;
+            width: 70%;
+        }
+
+    </style>
 
 <body>
     <%- include('../partials/NavBar.ejs') %>
@@ -9,6 +22,27 @@
     
     <h2><%= accountUser.accountType%> | <%= accountUser.firstName%> <%= accountUser.lastName%></h2>
     <h3><%= accountUser.email%></h3>
+
+    <div class="courses">
+        <h1>Your courses</h1>
+        <a class="linkButton alignCenter" href="/courses/join">Edit Courses</a>
+
+        <% if (courses.length > 0) { %>
+            <% courses.forEach(course => { %>
+            <div class="class alignCenter">
+                <a class="class" href="/courses/<%= course._id%>">
+                    <h2 class="title classTitle"><%= course.title %></h2>
+                </a>
+                <p class="desc"><%= course.desc %></p>
+                <ul class="classBox">
+                    <li class="classItem"><h3 class="subject">Subject: <%= course.subject %>|</h3></li>
+                    <li class="classItem"><h3 class="credits">Credits: <%= course.credits %></h3></li>
+                </ul>
+            </div>
+            <% }) %>
+        <% } else { %>
+            <h1>You are not apart of any courses.</h1>
+        <% } %>
     
     <%- include('../partials/Footer.ejs') %>
 </body>
